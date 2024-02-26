@@ -1,0 +1,23 @@
+﻿
+<h1>Results</h1>
+
+@Html.Raw(ViewBag.GanttChart)
+
+<table border="1">
+    <tr>
+        <th>Process</th>
+        <th>Arrival Time</th>
+        <th>Burst Time</th>
+        <th>Turnaround Time</th>
+    </tr>
+    @foreach (var process in Model)
+    {
+        <tr>
+            <td>@process.Id</td>
+            <td>@process.ArrivalTime</td>
+            <td>@process.BurstTime</td>
+            <td>@process.TurnaroundTime</td>
+        </tr>
+    }
+</table>
+    
