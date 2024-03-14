@@ -1,0 +1,18 @@
+﻿<h1>Enter Process Details for FCFS</h1>
+<form asp-controller="Simulation" asp-action="FCFSInput" method="post">
+    <table>
+        <tr>
+            <th>Process Id</th>
+            <th>Arrival Time</th>
+            <th>Burst Time</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="inputs[0].PId" /></td>
+            <td><input type="text" name="inputs[0].ArrivalTime" /></td>
+            <td><input type="text" name="inputs[0].BurstTime" /></td>
+        </tr>
+        <!-- Repeat the above row for each process -->
+    </table>
+    <button type="submit">Submit</button>
+</form>
+

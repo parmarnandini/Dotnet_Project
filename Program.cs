@@ -13,7 +13,7 @@ namespace Scheduling_Simulator
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AppDbContext;Trusted_Connection=True;"));
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SimulationsDb;Trusted_Connection=True;"));
 
 
             var app = builder.Build();

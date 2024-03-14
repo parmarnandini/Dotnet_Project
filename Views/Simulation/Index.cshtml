@@ -1,0 +1,13 @@
+﻿<h1>Welcome to Process Scheduling Visualization</h1>
+<form asp-controller="Simulation" asp-action="Index" method="post">
+    <label for="numProcesses">Number of Processes:</label>
+    <input type="text" name="numProcesses" /><br /><br />
+
+    <label for="algorithm">Algorithm:</label>
+    <select name="algorithm">
+        <option value="FCFS">First Come First Serve (FCFS)</option>
+        <option value="RR">Round Robin (RR)</option>
+    </select><br /><br />
+
+    <button type="submit">Submit</button>
+</form>

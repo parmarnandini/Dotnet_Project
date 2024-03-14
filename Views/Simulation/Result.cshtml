@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<h1>Simulation Results</h1>
+
+<table>
+    <tr>
+        <th>Process</th>
+        <th>Completion Time</th>
+        <th>Turnaround Time</th>
+        <th>Waiting Time</th>
+    </tr>
+    @foreach (var output in ViewBag.Outputs)
+    {
+        <tr>
+            <td>@((char)('A' + output.PId))</td>
+            <td>@output.CompletionTime</td>
+            <td>@output.TurnAroundTime</td>
+            <td>@output.WaitTime</td>
+        </tr>
+    }
+</table>

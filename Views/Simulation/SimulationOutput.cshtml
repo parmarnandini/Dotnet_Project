@@ -1,0 +1,20 @@
+﻿<h1>Simulation Output</h1>
+<table>
+    <tr>
+        <th>Simulation Id</th>
+        <th>User Id</th>
+        <th>Algorithm</th>
+        <th>Is Answered</th>
+        <th>Note</th>
+    </tr>
+    @foreach (var simulation in Model)
+    {
+        <tr>
+            <td>@simulation.S_Id</td>
+            <td>@simulation.UserId</td>
+            <td>@simulation.Algorithm</td>
+            <td>@simulation.IsAnswered</td>
+            <td>@simulation.S_Note</td>
+        </tr>
+    }
+</table>

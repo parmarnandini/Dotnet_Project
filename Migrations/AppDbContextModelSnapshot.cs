@@ -21,23 +21,68 @@ namespace Scheduling_Simulator.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Scheduling_Simulator.Models.Process", b =>
+            modelBuilder.Entity("Scheduling_Simulator.Models.OSQuiz", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Quiz_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Quiz_Id"));
+
+                    b.Property<string>("Choice1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Choice2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Choice3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CorrectAnswer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Quiz_Id");
+
+                    b.ToTable("Quiz");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.Result", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quiz_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "Quiz_Id");
+
+                    b.HasIndex("Quiz_Id");
+
+                    b.ToTable("Results");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.Simulation", b =>
+                {
+                    b.Property<int>("S_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("S_Id"));
 
                     b.Property<string>("Algorithm")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ArrivalTime")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BurstTime")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsAnswered")
                         .HasColumnType("bit");
@@ -48,61 +93,77 @@ namespace Scheduling_Simulator.Migrations
                     b.Property<int?>("QuantumTime")
                         .HasColumnType("int");
 
-                    b.Property<int>("TurnAroundTime")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserCalculatedAnswer")
-                        .HasColumnType("int");
+                    b.Property<string>("S_Note")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("S_Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Simulations");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.SimulationInput", b =>
+                {
+                    b.Property<int>("S_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ArrivalTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BurstTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("S_Id", "PId");
+
+                    b.ToTable("SimulationInputs");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.SimulationOutput", b =>
+                {
+                    b.Property<int>("S_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ByUser")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CompletionTime")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("P_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TurnAroundTime")
                         .HasColumnType("int");
 
                     b.Property<int>("WaitTime")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("S_Id", "PId");
 
-                    b.ToTable("Processes");
-                });
+                    b.HasIndex("P_Id");
 
-            modelBuilder.Entity("Scheduling_Simulator.Models.Quiz", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CorrectAnswer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsCorrect")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserAnswer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Quizzes");
+                    b.ToTable("SimulationOutput");
                 });
 
             modelBuilder.Entity("Scheduling_Simulator.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -114,11 +175,70 @@ namespace Scheduling_Simulator.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.Result", b =>
+                {
+                    b.HasOne("Scheduling_Simulator.Models.OSQuiz", "quiz")
+                        .WithMany()
+                        .HasForeignKey("Quiz_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Scheduling_Simulator.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("quiz");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.Simulation", b =>
+                {
+                    b.HasOne("Scheduling_Simulator.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.SimulationInput", b =>
+                {
+                    b.HasOne("Scheduling_Simulator.Models.Simulation", "simulation")
+                        .WithMany()
+                        .HasForeignKey("S_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("simulation");
+                });
+
+            modelBuilder.Entity("Scheduling_Simulator.Models.SimulationOutput", b =>
+                {
+                    b.HasOne("Scheduling_Simulator.Models.Simulation", "simulation1")
+                        .WithMany()
+                        .HasForeignKey("P_Id");
+
+                    b.HasOne("Scheduling_Simulator.Models.Simulation", "simulation")
+                        .WithMany()
+                        .HasForeignKey("S_Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("simulation");
+
+                    b.Navigation("simulation1");
                 });
 #pragma warning restore 612, 618
         }
