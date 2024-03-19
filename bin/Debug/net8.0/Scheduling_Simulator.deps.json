@@ -8,7 +8,9 @@
     ".NETCoreApp,Version=v8.0": {
       "Scheduling_Simulator/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": "8.0.2",
           "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": "8.0.2",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.2",
           "Microsoft.EntityFrameworkCore": "9.0.0-preview.1.24081.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.0-preview.1.24081.2",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.0-preview.1.24081.2",
@@ -592,6 +594,14 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Google/8.0.2": {
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "8.0.2.0",
+            "fileVersion": "8.0.224.6804"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authorization/8.0.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Metadata": "8.0.2",
@@ -664,6 +674,17 @@
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Components.Web.dll": {
             "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.0.224.6804"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/8.0.2": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "9.0.0-preview.1.24081.2"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
+            "assemblyVersion": "8.0.2.0",
             "fileVersion": "8.0.224.6804"
           }
         }
@@ -2440,6 +2461,13 @@
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Authentication.Google/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q6iFy77xC3kEV6KHf+L4lkYVJvqRMsIIG3L8vHYCW9nG/TD+sblI2eYmmC1Qh1hqO6ihKAnH3B3f1X/x4ErAtQ==",
+      "path": "microsoft.aspnetcore.authentication.google/8.0.2",
+      "hashPath": "microsoft.aspnetcore.authentication.google.8.0.2.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Authorization/8.0.2": {
       "type": "package",
       "serviceable": true,
@@ -2488,6 +2516,13 @@
       "sha512": "sha512-VRgjn/vAvrPEXTroe2ulzGXNwqp2imiAeEmrtAmEK8tUC7h2WLFciHithpeo2t2nbA7uuC4bAi+4tdbBEvzDQQ==",
       "path": "microsoft.aspnetcore.components.web/8.0.2",
       "hashPath": "microsoft.aspnetcore.components.web.8.0.2.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/8.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Oal92hfTP7CPS5NQkW//q1gEbkQIqWeo6NMxHbO6J0nNfG7Mxmzgzke/o60SEBeVAtEbHMTMZWcE64obf8w+aw==",
+      "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/8.0.2",
+      "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.8.0.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Metadata/8.0.2": {
       "type": "package",

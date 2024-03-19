@@ -11,8 +11,8 @@ using Scheduling_Simulator.Models;
 namespace Scheduling_Simulator.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240306101731_UpdatedDb")]
-    partial class UpdatedDb
+    [Migration("20240315105202_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,7 @@ namespace Scheduling_Simulator.Migrations
 
                     b.HasKey("Quiz_Id");
 
-                    b.ToTable("Quiz");
+                    b.ToTable("OSQuiz");
                 });
 
             modelBuilder.Entity("Scheduling_Simulator.Models.Result", b =>
@@ -72,7 +72,7 @@ namespace Scheduling_Simulator.Migrations
 
                     b.HasIndex("Quiz_Id");
 
-                    b.ToTable("Results");
+                    b.ToTable("Result");
                 });
 
             modelBuilder.Entity("Scheduling_Simulator.Models.Simulation", b =>
@@ -108,7 +108,7 @@ namespace Scheduling_Simulator.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Simulations");
+                    b.ToTable("Simulation");
                 });
 
             modelBuilder.Entity("Scheduling_Simulator.Models.SimulationInput", b =>
@@ -127,7 +127,7 @@ namespace Scheduling_Simulator.Migrations
 
                     b.HasKey("S_Id", "PId");
 
-                    b.ToTable("SimulationInputs");
+                    b.ToTable("SimulationInput");
                 });
 
             modelBuilder.Entity("Scheduling_Simulator.Models.SimulationOutput", b =>
@@ -144,9 +144,6 @@ namespace Scheduling_Simulator.Migrations
                     b.Property<int>("CompletionTime")
                         .HasColumnType("int");
 
-                    b.Property<int?>("P_Id")
-                        .HasColumnType("int");
-
                     b.Property<int>("TurnAroundTime")
                         .HasColumnType("int");
 
@@ -154,8 +151,6 @@ namespace Scheduling_Simulator.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("S_Id", "PId");
-
-                    b.HasIndex("P_Id");
 
                     b.ToTable("SimulationOutput");
                 });
@@ -171,15 +166,6 @@ namespace Scheduling_Simulator.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("UserId");
 
@@ -229,10 +215,6 @@ namespace Scheduling_Simulator.Migrations
 
             modelBuilder.Entity("Scheduling_Simulator.Models.SimulationOutput", b =>
                 {
-                    b.HasOne("Scheduling_Simulator.Models.Simulation", "simulation1")
-                        .WithMany()
-                        .HasForeignKey("P_Id");
-
                     b.HasOne("Scheduling_Simulator.Models.Simulation", "simulation")
                         .WithMany()
                         .HasForeignKey("S_Id")
@@ -240,8 +222,6 @@ namespace Scheduling_Simulator.Migrations
                         .IsRequired();
 
                     b.Navigation("simulation");
-
-                    b.Navigation("simulation1");
                 });
 #pragma warning restore 612, 618
         }

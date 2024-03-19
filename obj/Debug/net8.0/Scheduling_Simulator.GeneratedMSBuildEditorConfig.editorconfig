@@ -17,83 +17,67 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Scheduling_Simulator
 build_property.RootNamespace = Scheduling_Simulator
-build_property.ProjectDir = D:\DotnetPr\Scheduling_Simulator\
+build_property.ProjectDir = D:\CSE SEM-6\dotnet\Project\Dotnet_Project\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\DotnetPr\Scheduling_Simulator
+build_property.MSBuildProjectDirectory = D:\CSE SEM-6\dotnet\Project\Dotnet_Project
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Home/Index.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Home/Privacy.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Shared/Error.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Simulation/FCFSInput.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Simulation/FCFSInput.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2ltdWxhdGlvblxGQ0ZTSW5wdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Simulation/Index.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Simulation/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2ltdWxhdGlvblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Simulation/Input.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Simulation/Input.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2ltdWxhdGlvblxJbnB1dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Simulation/Result.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Simulation/Result.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2ltdWxhdGlvblxSZXN1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Simulation/RRInput.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Simulation/RRInput.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2ltdWxhdGlvblxSUklucHV0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Simulation/SimulationOutput.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Simulation/SimulationOutput.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2ltdWxhdGlvblxTaW11bGF0aW9uT3V0cHV0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Users/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Users/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/DotnetPr/Scheduling_Simulator/Views/Users/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/DotnetPr/Scheduling_Simulator/Views/Users/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/DotnetPr/Scheduling_Simulator/Views/Users/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/DotnetPr/Scheduling_Simulator/Views/_ViewImports.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/_ViewStart.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/DotnetPr/Scheduling_Simulator/Views/Shared/_Layout.cshtml]
+[D:/CSE SEM-6/dotnet/Project/Dotnet_Project/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cqh39fswuf

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DotnetPr\\Scheduling_Simulator\\Scheduling_Simulator.csproj": {}
+    "D:\\CSE SEM-6\\dotnet\\Project\\Dotnet_Project\\Scheduling_Simulator.csproj": {}
   },
   "projects": {
-    "D:\\DotnetPr\\Scheduling_Simulator\\Scheduling_Simulator.csproj": {
+    "D:\\CSE SEM-6\\dotnet\\Project\\Dotnet_Project\\Scheduling_Simulator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DotnetPr\\Scheduling_Simulator\\Scheduling_Simulator.csproj",
+        "projectUniqueName": "D:\\CSE SEM-6\\dotnet\\Project\\Dotnet_Project\\Scheduling_Simulator.csproj",
         "projectName": "Scheduling_Simulator",
-        "projectPath": "D:\\DotnetPr\\Scheduling_Simulator\\Scheduling_Simulator.csproj",
-        "packagesPath": "C:\\Users\\NANDINI\\.nuget\\packages\\",
-        "outputPath": "D:\\DotnetPr\\Scheduling_Simulator\\obj\\",
+        "projectPath": "D:\\CSE SEM-6\\dotnet\\Project\\Dotnet_Project\\Scheduling_Simulator.csproj",
+        "packagesPath": "C:\\Users\\Urja Gadkari\\.nuget\\packages\\",
+        "outputPath": "D:\\CSE SEM-6\\dotnet\\Project\\Dotnet_Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\NANDINI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Urja Gadkari\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,7 +40,15 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Google": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
             "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.2, )"
             },
@@ -82,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

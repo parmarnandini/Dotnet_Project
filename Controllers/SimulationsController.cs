@@ -68,14 +68,20 @@ namespace Scheduling_Simulator.Controllers
                 CT[i] = Math.Max(CT[i - 1], inputs[i].ArrivalTime) + inputs[i].BurstTime; // Completion time
                 TAT[i] = CT[i] - inputs[i].ArrivalTime; // Turnaround time
                 WT[i] = TAT[i] - inputs[i].BurstTime; // Waiting time
+
+                Console.WriteLine(inputs[i].PId);
+                Console.WriteLine(CT[i]);
+
             }
+
+            
 
             // Create SimulationOutput objects for each process
             for (int i = 0; i < n; i++)
             {
                 outputs.Add(new SimulationOutput
                 {
-                    PId = i , // Assuming PId starts from 1
+                    PId = inputs[i].PId , // Assuming PId starts from 1
                     CompletionTime = CT[i],
                     TurnAroundTime = TAT[i],
                     WaitTime = WT[i],
@@ -83,10 +89,11 @@ namespace Scheduling_Simulator.Controllers
                 });
             }
 
+            outputs = outputs.OrderBy(i => i.PId).ToList();
             return outputs;
         }
 
-
+        /*
         private List<SimulationOutput> CalculateRoundRobin(List<SimulationInput> inputs, int quantumTime)
         {
             List<SimulationOutput> outputs = new List<SimulationOutput>();
@@ -144,6 +151,100 @@ namespace Scheduling_Simulator.Controllers
                         ByUser = false
                     });
                 }
+
+            }
+
+            // Group the output by process ID and calculate the total turnaround and waiting times
+            var groupedOutputs = outputs.GroupBy(o => o.PId)
+                                        .Select(g => new SimulationOutput
+                                        {
+                                            PId = g.Key,
+                                            CompletionTime = g.Max(o => o.CompletionTime),
+                                            TurnAroundTime = g.Sum(o => o.TurnAroundTime),
+                                            WaitTime = g.Sum(o => o.WaitTime)
+                                        })
+                                        .OrderBy(o => o.PId)
+                                        .ToList();
+
+            return groupedOutputs;
+        }
+        */
+
+
+
+        private List<SimulationOutput> CalculateRoundRobin(List<SimulationInput> inputs, int quantumTime)
+        {
+            List<SimulationOutput> outputs = new List<SimulationOutput>();
+
+            int n = inputs.Count;
+            //inputs = inputs.OrderBy(i => i.ArrivalTime).ToList();
+            int[] remainingBurstTimes = inputs.Select(input => input.BurstTime).ToArray();
+            int[] completionTimes = new int[n];
+            int[] turnaroundTimes = new int[n];
+            int[] waitingTimes = new int[n];
+
+            Queue<int> readyQueue = new Queue<int>();
+            int currentTime = 0;
+            int arrivedIndex = 0;
+            int currentIndex=-1;
+
+            while (readyQueue.Count > 0 || arrivedIndex < n)
+            {
+                // Add processes that have arrived and not yet executed to the ready queue
+
+
+                while (arrivedIndex < n && inputs[arrivedIndex].ArrivalTime <= currentTime)
+                {
+                    readyQueue.Enqueue(arrivedIndex);
+                    arrivedIndex++;
+                }
+
+                if (currentIndex != -1 && remainingBurstTimes[currentIndex] > 0)
+                {
+                    readyQueue.Enqueue(currentIndex);
+                }
+
+                foreach (var ele in readyQueue)
+                {
+                    Console.Write(ele + " ");
+                }
+                Console.WriteLine();
+
+                if (readyQueue.Count == 0)
+                {
+                    currentTime = inputs[arrivedIndex].ArrivalTime;
+                    continue;
+                }
+
+                currentIndex = readyQueue.Dequeue();
+                int burstTime = Math.Min(quantumTime, remainingBurstTimes[currentIndex]);
+
+                // Execute the process for the burst time
+                currentTime += burstTime;
+                remainingBurstTimes[currentIndex] -= burstTime;
+
+
+                Console.Write(inputs[currentIndex].PId);
+                Console.WriteLine(remainingBurstTimes[currentIndex]);
+                // If the process is not yet completed, add it back to the ready queue
+                if (remainingBurstTimes[currentIndex] <= 0)
+                {
+                    // Process completed
+                    completionTimes[currentIndex] = currentTime; // Increment completion time by 1
+                    turnaroundTimes[currentIndex] = completionTimes[currentIndex] - inputs[currentIndex].ArrivalTime;
+                    waitingTimes[currentIndex] = turnaroundTimes[currentIndex] - inputs[currentIndex].BurstTime;
+
+                    outputs.Add(new SimulationOutput
+                    {
+                        PId = inputs[currentIndex].PId,
+                        CompletionTime = completionTimes[currentIndex],
+                        TurnAroundTime = turnaroundTimes[currentIndex],
+                        WaitTime = waitingTimes[currentIndex],
+                        ByUser = false
+                    });
+
+                }
+                
 
             }
 
