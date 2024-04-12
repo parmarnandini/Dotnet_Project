@@ -25,10 +25,36 @@
         {
             <tr>
                 <td colspan="2">Quantum Time</td>
-                <td><input type="text" name="quantumTime" /></td>
+                <td><input type="number" name="quantumTime" /></td>
             </tr>
         }
     </table>
 
-    <button type="submit">Calculate</button>
+    <!--<button type="submit">Calculate</button>-->
+
+    <input type="hidden" id="selectedOption" name="selectedOption" />
+    <button  class="btn-option" value="calc">Calculate result</button>
+    <button class="btn-option" value="userTry">Try Yourself</button>
+        
+
+
+
 </form>
+
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+    
+        var buttons = document.querySelectorAll(".btn-option");
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                document.getElementById("selectedOption").value = button.value;
+                document.getElementById("myForm").submit();
+            });
+        });
+    });
+
+    
+
+</script>

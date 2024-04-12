@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    <form asp-controller="Simulation" asp-action="checkAnswer" method="post">
+    
+        <h3>@ViewBag.Algorithm</h3>
+        <input name="algorithm" type="hidden" value="@ViewBag.Algorithm" />
+        <table>
+            <tr>
+                <th>Process</th>
+                <th>Arrival Time</th>
+                <th>Burst Time</th>
+                <th>Completion Time</th>
+                <th>Turnaround Time</th>
+                <th>Waiting Time</th>
+            </tr>
+            @for (int i = 0; i < ViewBag.NumProcesses; i++)
+            {
+                <tr>
+                    <td>@((char)('A' + i))</td>
+                    
+                    <input type="hidden" name="inputs[@i].PId" value="@i" />  
+
+                    @for(int j=0;j<ViewBag.Inputs.Count;j++)
+                    {
+
+                        if (i == j)
+                        {
+                            <td><input type="text" name="inputs[@j].ArrivalTime" value="@ViewBag.Inputs[j].ArrivalTime" readonly /></td>
+                            <td><input type="text" name="inputs[@j].BurstTime" value="@ViewBag.Inputs[j].BurstTime" readonly /></td>
+
+                            /*
+                            <td>@ViewBag.Inputs[j].ArrivalTime</td>
+                            <td>@ViewBag.Inputs[j].BurstTime</td>
+                            */
+                        }
+
+                    }
+
+                    <td><input type="text" name="answers[@i].CompletionTime" /></td>
+                    <td><input type="text" name="answers[@i].TurnAroundTime" /></td>
+                    <td><input type="text" name="answers[@i].WaitTime" /></td>
+                </tr>
+            }
+
+            
+        </table>
+
+        <button type="submit">Check answer</button>
+
+    </form>
+
+    <script>
+        
+    </script>
+}

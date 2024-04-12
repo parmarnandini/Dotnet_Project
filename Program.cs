@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting.Internal;
 using Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore;
 using Scheduling_Simulator.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Scheduling_Simulator
 {
@@ -38,6 +39,18 @@ namespace Scheduling_Simulator
                 options.ClaimActions.MapJsonKey("urn:google:picture", "picture", "url");
             });
 
+            services.AddDefaultIdentity<User>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+                // Other Identity options...
+            })
+        .AddEntityFrameworkStores<AppDbContext>();
+
+
+            //Session
+            services.AddSession();
+
+
             services.AddControllersWithViews();
         }
 
@@ -59,6 +72,11 @@ namespace Scheduling_Simulator
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+
+            //Session
+            app.UseRouting();
+
 
             app.UseAuthentication(); // If authentication is used
 

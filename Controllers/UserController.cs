@@ -7,6 +7,8 @@ using Scheduling_Simulator.Models;
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Scheduling_Simulator.Controllers
 {
@@ -14,16 +16,21 @@ namespace Scheduling_Simulator.Controllers
     {
 
         private readonly AppDbContext _context;
+        
+
+       
         public UserController(AppDbContext context)
         {
             _context = context;
+           
         }
+
         public IActionResult Index()
         {
             return View();
         }
 
-
+      
         public async Task Login()
         {
             await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()

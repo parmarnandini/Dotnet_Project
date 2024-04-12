@@ -6,3 +6,32 @@
     <h1 class="display-4">Scheduling Simulator</h1>
     <button class="btn btn-outline-danger"><a class="text-decoration-none" asp-controller="Simulation" asp-action="Index">Simulate</a></button>
 </div>
+
+<div>
+
+
+@if (Context.User.Identity.IsAuthenticated)
+{
+    <h1>
+        <a>Hello, @User.Identity.Name</a>
+
+        <a>@User</a>
+    </h1>
+    <p>
+        @User.Identity.AuthenticationType
+    </p>
+    <p>
+        @User.Identity.IsAuthenticated
+    </p>
+
+
+
+    <p>
+        <a asp-controller="Home" asp-action="Logout">Logout</a>
+    </p>
+
+
+}
+</div>
+
+

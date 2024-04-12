@@ -7,17 +7,84 @@
 <table>
     <tr>
         <th>Process</th>
+        <th>Arrival Time</th>
+        <th>Burst Time</th>
         <th>Completion Time</th>
         <th>Turnaround Time</th>
         <th>Waiting Time</th>
     </tr>
-    @foreach (var output in ViewBag.Outputs)
+
+    @if (ViewBag.selectedOption == "userTry")
     {
-        <tr>
-            <td>@((char)('A' + output.PId))</td>
-            <td>@output.CompletionTime</td>
-            <td>@output.TurnAroundTime</td>
-            <td>@output.WaitTime</td>
-        </tr>
+        @for(int i=0;i<ViewBag.Answer.Count;i++)
+        {
+            <tr>
+                <td>@((char)('A' + ViewBag.Answer[i].PId))</td>
+                <td>@ViewBag.Inputs[i].ArrivalTime</td>
+                <td>@ViewBag.Inputs[i].BurstTime</td>
+                <td>@ViewBag.Answer[i].CompletionTime</td>
+                <td>@ViewBag.Answer[i].TurnAroundTime</td>
+                <td>@ViewBag.Answer[i].WaitTime</td>
+            </tr>
+        }
     }
+    else
+    {
+       @for(int i=0;i<ViewBag.Outputs.Count;i++)
+        {
+            <tr>
+                <td>@((char)('A' + ViewBag.Outputs[i].PId))</td>
+                <td>@ViewBag.Inputs[i].ArrivalTime</td>
+                <td>@ViewBag.Inputs[i].BurstTime</td>
+                <td>@ViewBag.Outputs[i].CompletionTime</td>
+                <td>@ViewBag.Outputs[i].TurnAroundTime</td>
+                <td>@ViewBag.Outputs[i].WaitTime</td>
+            </tr>
+        }
+    }
+   
 </table>
+
+<button id="saveButton"><a asp-controller="Simulation" asp-action="saveSimulation"> Save Simulation </a></button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var saveButton = document.getElementById("saveButton");
+        saveButton.addEventListener("click", function () {
+            var simulationData = [];
+            var tableRows = document.querySelectorAll("#simulationTable tr:not(:first-child)");
+            tableRows.forEach(function (row) {
+                var rowData = {
+                    process: row.cells[0].textContent.trim(),
+                    arrivalTime: row.cells[1].textContent.trim(),
+                    burstTime: row.cells[2].textContent.trim(),
+                    completionTime: row.cells[3].textContent.trim(),
+                    turnaroundTime: row.cells[4].textContent.trim(),
+                    waitingTime: row.cells[5].textContent.trim()
+                };
+                simulationData.push(rowData);
+            });
+
+            // Sending data to the controller action
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/Simulation/saveSimulation");
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log("Simulation data saved successfully.");
+                    // Optionally, you can redirect the user to another page upon successful save
+                    // window.location.href = "/SuccessPage";
+                } else {
+                    console.error("Failed to save simulation data.");
+                }
+            };
+            xhr.send(JSON.stringify(simulationData));
+        });
+    
+    }
+</script>
+
+
+
+
+
